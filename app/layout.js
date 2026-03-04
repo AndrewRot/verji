@@ -1,5 +1,7 @@
 import './globals.css';
 import Header from '@/components/Header';
+import { Analytics } from "@vercel/analytics/next"
+
 
 export const metadata = {
   title: 'Verji - A Premium Verjus Beverage',
@@ -27,6 +29,7 @@ export default function RootLayout({ children }) {
       <body className="bg-gray-50 text-gray-900">
         <Header />
         {children}
+        <Analytics/>
       </body>
     </html>
   );
