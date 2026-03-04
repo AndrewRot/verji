@@ -1,0 +1,14 @@
+# Next.js
+.next
+out
+
+# Dependencies
+node_modules
+
+# Local Environment Variables
+.env.local
+
+# Sanity
+sanity/node_modules
+sanit
+y/dist
