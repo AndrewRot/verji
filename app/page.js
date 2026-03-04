@@ -1,6 +1,8 @@
 import { client } from '@/lib/sanity';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
+import Footer from '@/components/Footer';
+import Media from '@/components/Media';
 import Shop from '@/components/Shop';
 
 async function getProducts() {
@@ -17,6 +19,8 @@ export default async function Home() {
       <Hero products={products} />
       <About />
       <Shop products={products} />
+      <Media />
+      <Footer />
     </main>
   );
 }
