@@ -14,9 +14,9 @@ export default async function Home() {
 
   return (
     <main>
-      {/* <Hero products={products} /> */}
+      <Hero products={products} />
       <About />
-      {/* <Shop products={products} /> */}
+      <Shop products={products} />
     </main>
   );
 }

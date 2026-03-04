@@ -16,6 +16,7 @@ function urlFor(source) {
 export default function Hero({ products }) {
   const [[page, direction], setPage] = useState([0, 0]);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  console.log('products:', products);
 
   if (!products || products.length === 0) {
     return (
