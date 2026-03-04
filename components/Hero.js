@@ -82,7 +82,7 @@ export default function Hero({ products }) {
                 }}
               />
             )}
-            <div className="absolute bottom-1/4 w-64 h-auto bg-white/50 backdrop-blur-md rounded-lg p-4 shadow-lg text-center">
+            <div className="absolute bottom-1/4 transform translate-y-1/2 w-64 h-auto bg-white/50 backdrop-blur-md rounded-lg p-4 shadow-lg text-center">
               <h2 className="text-xl font-bold">{product.name}</h2>
               <p className="text-sm text-gray-600">{product.ingredients.join(', ')}</p>
             </div>
