@@ -3,30 +3,34 @@ import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-export async function POST(request) {
-  const { product } = await request.json();
+export async function POST(req) {
+  const { stripePriceId, quantity } = await req.json();
+  console.log('STRIPE REQUEST: stripePriceId:', stripePriceId);
+  console.log('STRIPE REQUEST: quantity:', quantity);
 
-  if (!product) {
-    return NextResponse.json({ error: 'Product not found' }, { status: 400 });
+  if (!stripePriceId || !quantity) {
+    return NextResponse.json({ error: 'Missing stripePriceId or quantity' }, { status: 400 });
   }
 
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
+      // line_items: [
+
       line_items: [
         {
-          price: product.stripePriceId,
-          quantity: 1,
+          price: stripePriceId,
+          quantity: quantity,
         },
       ],
       mode: 'payment',
-      success_url: `${request.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${request.headers.get('origin')}/`,
+      success_url: `${req.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${req.headers.get('origin')}/`,
     });
 
     return NextResponse.json({ sessionId: session.id });
   } catch (err) {
-    console.error(err);
-    return NextResponse.json({ error: 'Error creating checkout session' }, { status: 500 });
+    console.error('Stripe Error:', err);
+    return new Response(JSON.stringify({ error: err.message }), { status: 500 });
   }
 }

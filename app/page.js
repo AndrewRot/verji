@@ -7,7 +7,7 @@ import Shop from '@/components/Shop';
 
 async function getProducts() {
   const query = `*[_type == "product"] | order(name asc)`;
-  const products = await client.fetch(query);
+  const products = await client.fetch(query, {}, { next: { revalidate: 0 } });
   return products;
 }
 

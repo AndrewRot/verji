@@ -23,7 +23,8 @@ export default function ProductModal({ product, onClose }) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ product }),
+      // stripePriceId
+      body: JSON.stringify({ stripePriceId: product.stripePriceId, quantity: 1 }),
     });
 
     const session = await response.json();
