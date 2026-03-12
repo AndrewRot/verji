@@ -10,7 +10,7 @@ export const metadata = {
   openGraph: {
     title: 'Verji - A Premium Verjus Beverage',
     description: 'Experience Verji, an elegant, non-alcoholic alternative to wine.',
-    url: 'https://verji.vercel.app', // Replace with your actual domain
+    url: 'https://verji.club', // Replace with your actual domain (Old 'https://verji.vercel.app')
     siteName: 'Verji',
     images: [
       {
