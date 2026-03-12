@@ -25,21 +25,33 @@ export async function POST(req) {
     const email = session.customer_details?.email;
 
     if (email) {
-      try {
-        // Add customer to Resend audience for customer support
-        await resend.contacts.create({
+      const firstName = session.customer_details?.name?.split(' ')[0] ?? '';
+      const lastName = session.customer_details?.name?.split(' ').slice(1).join(' ') ?? '';
+
+      await Promise.all([
+        resend.contacts.create({
           audienceId: process.env.RESEND_CUSTOMERS_AUDIENCE_ID,
           email,
-          firstName: session.customer_details?.name?.split(' ')[0] ?? '',
-          lastName: session.customer_details?.name?.split(' ').slice(1).join(' ') ?? '',
+          firstName,
+          lastName,
           unsubscribed: false,
-        });
-      } catch (err) {
-        // 422 means already in the audience — not an error worth alerting on
-        if (err?.statusCode !== 422 && err?.name !== 'validation_error') {
-          console.error('Resend customer sync error:', err);
-        }
-      }
+        }).catch(err => {
+          if (err?.statusCode !== 422 && err?.name !== 'validation_error') {
+            console.error('Resend customer sync error:', err);
+          }
+        }),
+        resend.contacts.create({
+          audienceId: process.env.RESEND_ALL_EMAILS_AUDIENCE_ID,
+          email,
+          firstName,
+          lastName,
+          unsubscribed: false,
+        }).catch(err => {
+          if (err?.statusCode !== 422 && err?.name !== 'validation_error') {
+            console.error('Resend all-emails sync error:', err);
+          }
+        }),
+      ]);
     }
   }
 
