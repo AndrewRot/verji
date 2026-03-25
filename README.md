@@ -1,22 +1,31 @@
-# Verji - A Premium Verjus Beverage Website
+# Verji
 
-This is a production-ready, single-page ecommerce website for Verji, a premium verjus beverage company.
+A premium, non-alcoholic verjus beverage — crafted from unripe grapes and natural Moroccan botanicals.
 
-## 🏗 Tech Stack
+**Live site:** [verji.club](https://verji.club)
 
-*   **Framework**: Next.js (App Router)
-*   **Language**: JavaScript
-*   **Styling**: Tailwind CSS
-*   **Animations**: Framer Motion
-*   **CMS / Database**: Sanity.io
-*   **Payments**: Stripe Checkout
+---
 
-## 🚀 Getting Started
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 14 (App Router) |
+| Language | JavaScript |
+| Styling | Tailwind CSS |
+| Animations | Framer Motion |
+| CMS | Sanity.io |
+| Payments | Stripe Checkout |
+| Email / Newsletter | Resend |
+| Hosting | Vercel |
+| Domain | Squarespace Domains |
+
+## Getting Started
 
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/AndrewRot/verji.git
 cd verji
 ```
 
@@ -28,7 +37,7 @@ npm install
 
 ### 3. Set up environment variables
 
-Create a `.env.local` file in the root of your project and add the following environment variables:
+Create a `.env.local` file in the project root:
 
 ```
 # Sanity
@@ -38,50 +47,50 @@ NEXT_PUBLIC_SANITY_DATASET=your-sanity-dataset-name
 # Stripe
 STRIPE_SECRET_KEY=your-stripe-secret-key
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your-stripe-publishable-key
+
+# Resend
+RESEND_API_KEY=your-resend-api-key
 ```
 
-### 4. Set up Sanity Studio
-
-Navigate to the `sanity` directory and install the dependencies:
-
-```bash
-cd sanity
-npm install
-```
-
-To run the Sanity Studio locally, use:
+### 4. Run the development server
 
 ```bash
 npm run dev
 ```
 
-You can then visit `http://localhost:3333` to access the studio. You will need to create a `product` schema and add your products.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-### 5. Run the development server
+### 5. Sanity Studio
 
-Navigate back to the root directory and run the development server:
+The Sanity Studio is embedded at `/studio`. Visit [http://localhost:3000/studio](http://localhost:3000/studio) to manage products and content.
 
-```bash
-cd ..
-npm run dev
-```
+## Deployment
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project is deployed on Vercel. To deploy your own instance:
 
-## 🚀 Deployment
+1. Push your code to GitHub.
+2. Import the repository on [Vercel](https://vercel.com).
+3. Add the environment variables from `.env.local` to the Vercel project settings.
+4. Deploy.
 
-This project is optimized for deployment on Vercel. 
+## Site Structure
 
-1.  Push your code to a Git repository.
-2.  Import the repository on Vercel.
-3.  Add the environment variables from your `.env.local` file to the Vercel project settings.
-4.  Deploy!
+| Section | Description |
+|---------|-------------|
+| Hero | Full-screen carousel with SVG wine bottles, per-product liquid colors, and wrapped logo labels |
+| About | Brand story, Moroccan ingredient sourcing, and feature highlights |
+| Shop | Product grid powered by Sanity CMS with Stripe checkout |
+| Media | Press quotes and testimonials |
+| Footer | Newsletter signup (Resend), social links, and contact info |
 
-## 🎨 Design & Structure
+## Resource Links
 
-The website is a single-page application with a premium, minimal, and elegant design. It features smooth animations and a responsive layout.
-
-*   **Hero Section**: An interactive, full-screen section with a draggable product carousel.
-*   **About Section**: Information about the brand and product.
-*   **Shop Section**: A grid of products that open a modal for purchase.
-
+| Resource | URL |
+|----------|-----|
+| Website | [verji.club](https://verji.club) |
+| Squarespace Domains | [account.squarespace.com/domains](https://account.squarespace.com/domains) |
+| GitHub | [github.com/AndrewRot/verji](https://github.com/AndrewRot/verji) |
+| Sanity | [sanity.io — Verji project](https://www.sanity.io/organizations/oDw3bJnoG/project/3s6p4hzf?orgId=oDw3bJnoG) |
+| Vercel | [vercel.com — Verji deployment](https://vercel.com/andrew-rottiers-projects/verji/3G3BxDv1UAhUhn7zSXuRTaJ2sp47) |
+| Stripe | [stripe.com — Dashboard](https://dashboard.stripe.com/acct_1T7O3WAQw4313lFr/test/dashboard) |
+| Resend | [resend.com](https://resend.com/) |
