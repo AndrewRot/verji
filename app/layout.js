@@ -27,7 +27,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="bg-gray-50 text-gray-900">
+      <body className="bg-cream text-wine-900">
         <Header />
         {children}
         <Analytics/>
